@@ -49,7 +49,7 @@ export class CategoriesController {
             throw new BadRequestException("Category not found");
         }
         if (await this.categoriesService.isUsed(+id)) {
-            throw new BadRequestException("Category is used by a supplier or in a transaction");
+            throw new BadRequestException("Categorie wordt gebruikt door een leverancier of uitgave");
         }
         return this.categoriesService.remove(+id);
     }

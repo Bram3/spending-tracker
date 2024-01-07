@@ -62,7 +62,7 @@ export class SuppliersController {
             )
         }
         if (await this.suppliersService.isUsed(+id)) {
-            throw new BadRequestException("Supplier is used in a transaction");
+            throw new BadRequestException("Leverancier wordt gebruikt door een uitgave");
         }
         return await this.suppliersService.remove(+id);
     }
