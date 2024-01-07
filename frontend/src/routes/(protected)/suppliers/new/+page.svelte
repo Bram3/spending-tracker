@@ -33,7 +33,7 @@
 				type="text"
 				name="name"
 				id="name"
-				placeholder="Categorie naam"
+				placeholder="Leverancier naam"
 				required
 				bind:value={$form.name}
 				{...$constraints.name}
