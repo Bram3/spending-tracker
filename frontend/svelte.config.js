@@ -14,6 +14,12 @@ const config = {
 		adapter: adapter(),
 		csrf: {
 			checkOrigin: false,
+		},
+		serviceWorker: {
+			register: false
+		},
+		files: {
+			serviceWorker: 'src/service-worker.ts',
 		}
 	}
 
