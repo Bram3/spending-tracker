@@ -29,7 +29,7 @@ export class Transaction {
     @Column()
     description: string;
 
-    @Column()
+    @Column('decimal')
     amount: number;
 
     @Column()

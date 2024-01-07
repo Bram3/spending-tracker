@@ -29,8 +29,6 @@
 		});
 	});
 
-	$: console.log($form.supplierId);
-
 	$: {
 		const supplier = data.suppliers.find(
 			(supplier: { id: any }) => supplier.id === $form.supplierId
@@ -110,6 +108,7 @@
 				name="amount"
 				id="amouint"
 				placeholder={0.0}
+				step={0.01}
 				required
 				bind:value={$form.amount}
 				{...$constraints.amount}

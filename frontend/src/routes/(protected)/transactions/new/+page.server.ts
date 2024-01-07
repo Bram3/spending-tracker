@@ -38,7 +38,6 @@ export const actions: Actions = {
             return fail(500, { form });
         }
         const user = await userRes.json();
-        console.log(locals);
         const res = await fetch(`http://api:${process.env.API_PORT}/transactions`, { headers: { 'Authorization': `Bearer ${locals.token}`, "Content-Type": "application/json" }, method: "POST", body: JSON.stringify({ userId: user.id, ...form.data }), });
         if (res.status !== 201) {
             try {

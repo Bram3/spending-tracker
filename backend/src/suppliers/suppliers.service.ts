@@ -16,9 +16,7 @@ export class SuppliersService {
     ) { }
 
     async create(createSupplierDto: CreateSupplierDto): Promise<Supplier> {
-        console.log(createSupplierDto)
         const supplier = this.supplierRepository.create(createSupplierDto);
-        console.log(supplier)
         return this.supplierRepository.save(supplier);
     }
 

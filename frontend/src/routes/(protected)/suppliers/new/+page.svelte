@@ -10,7 +10,6 @@
 
 	let categories: any = [];
 	$: data.categories.forEach((category: { id: any; name: any }) => {
-		console.log(category);
 		categories.push({
 			value: category.id,
 			name: category.name
