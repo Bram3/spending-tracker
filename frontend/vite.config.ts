@@ -7,6 +7,9 @@ export default defineConfig({
 		watch: {
 			usePolling: true
 		},
-		host: true
+		host: true,
+		cors: {
+			origin: process.env.ORIGIN || 'http://localhost:5173',
+		}
 	}
 });
