@@ -20,6 +20,10 @@
 	$: activeUrl = $page.url.pathname;
 	export const currentUrl = writable('');
 
+	onMount(() => {
+		currentUrl.set($page.url.pathname.split('/')[1]);
+	});
+
 	function handleClick(event: any) {
 		currentUrl.set(event.target.attributes.href.value);
 	}
