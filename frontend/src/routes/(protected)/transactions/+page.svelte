@@ -51,7 +51,7 @@
 				type="text"
 				name="search"
 				id="search"
-				placeholder="Search"
+				placeholder="Zoek"
 				required
 				bind:value={searchTerm}
 			/>
