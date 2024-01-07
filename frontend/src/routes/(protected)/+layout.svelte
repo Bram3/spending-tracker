@@ -47,13 +47,13 @@
 			<DropdownItem
 				on:click={() => {
 					goto('/auth/logout');
-				}}>Sign out</DropdownItem
+				}}>Uitloggen</DropdownItem
 			>
 		</Dropdown>
 		<NavUl {activeUrl}>
-			<NavLi href="/transactions" on:click={handleClick}>Transactions</NavLi>
-			<NavLi href="/categories" on:click={handleClick}>Categories</NavLi>
-			<NavLi href="/suppliers" on:click={handleClick}>Suppliers</NavLi>
+			<NavLi href="/transactions" on:click={handleClick}>Uitgaven</NavLi>
+			<NavLi href="/categories" on:click={handleClick}>Categorieën</NavLi>
+			<NavLi href="/suppliers" on:click={handleClick}>Leveranciers</NavLi>
 		</NavUl>
 	</Navbar>
 

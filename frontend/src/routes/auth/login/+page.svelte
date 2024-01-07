@@ -12,10 +12,10 @@
 <div class="grid h-screen grid-cols-1 items-center justify-items-center">
 	<Card class="w-full max-w-md">
 		<form class="flex flex-col space-y-6" method="POST" use:enhance>
-			<h3 class="text-xl font-medium text-gray-900 dark:text-white">Login to Spending Tracker</h3>
+			<h3 class="text-xl font-medium text-gray-900 dark:text-white">Inloggen</h3>
 			{#if $message}<Helper class="mt-2" helperClass="text-lg" color="red">{$message}</Helper>{/if}
 			<Label class="space-y-2">
-				<span>Username</span>
+				<span>Email</span>
 				<Input
 					type="email"
 					name="email"
@@ -28,7 +28,7 @@
 				{#if $errors.email}<Helper class="mt-2" color="red">{$errors.email}</Helper>{/if}
 			</Label>
 			<Label class="space-y-2">
-				<span>Password</span>
+				<span>Wachtwoord</span>
 				<Input
 					type="password"
 					name="password"
@@ -44,15 +44,15 @@
 				{#if $delayed}
 					<Spinner size="5" />
 				{:else}
-					Login to your account
+					Inloggen
 				{/if}
 			</Button>
 			<div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-				Don't have an account? <a
+				Nog geen account? <a
 					href="/auth/register"
 					class="text-primary-700 dark:text-primary-500 hover:underline"
 				>
-					Create account
+					Account Maken
 				</a>
 			</div>
 		</form>

@@ -4,8 +4,8 @@
 </script>
 
 <div class="container mx-auto flex h-full items-center justify-center">
-	<div class="flex flex-col items-center space-y-10 text-center">
-		<P size="5xl" weight="bold">Spending Tracker</P>
+	<div class="flex flex-col items-center space-y-10 text-left sm:text-center">
+		<P size="5xl" weight="bold" align="center">Spending Tracker</P>
 		<Button
 			on:click={() => {
 				goto('/transactions');

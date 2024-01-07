@@ -48,11 +48,11 @@
 		use:enhance
 		action="?/new"
 	>
-		<h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Create new transaction</h3>
+		<h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Nieuwe Uitgave</h3>
 		{#if $message}<Helper class="mt-2" helperClass="text-lg" color="red">{$message}</Helper>{/if}
 
 		<Label class="space-y-2">
-			<span>Descriptionn</span>
+			<span>Omschrijving</span>
 			<Input
 				type="text"
 				name="description"
@@ -65,7 +65,7 @@
 			{#if $errors.description}<Helper class="mt-2" color="red">{$errors.description}</Helper>{/if}
 		</Label>
 		<Label class="space-y-2">
-			<span>Supplier</span>
+			<span>Leverancier</span>
 			<Select
 				type="text"
 				name="supplierId"
@@ -78,7 +78,7 @@
 			{#if $errors.supplierId}<Helper class="mt-2" color="red">{$errors.supplierId}</Helper>{/if}
 		</Label>
 		<Label class="space-y-2">
-			<span>Category</span>
+			<span>Categorie</span>
 			<Select
 				type="text"
 				name="categoryId"
@@ -91,7 +91,7 @@
 			{#if $errors.categoryId}<Helper class="mt-2" color="red">{$errors.categoryId}</Helper>{/if}
 		</Label>
 		<Label class="space-y-2">
-			<span>Date</span>
+			<span>Datum</span>
 			<Input
 				type="date"
 				name="date"
@@ -104,11 +104,11 @@
 			{#if $errors.date}<Helper class="mt-2" color="red">{$errors.date}</Helper>{/if}
 		</Label>
 		<Label class="space-y-2">
-			<span>Amount</span>
+			<span>Kostprijs</span>
 			<Input
 				type="number"
 				name="amount"
-				id="amouint"
+				id="amount"
 				placeholder={0.0}
 				required
 				bind:value={$form.amount}
@@ -117,7 +117,7 @@
 			{#if $errors.amount}<Helper class="mt-2" color="red">{$errors.amount}</Helper>{/if}
 		</Label>
 		<Label class="space-y-2">
-			<span>Payment Method</span>
+			<span>Betaalmethode</span>
 			<Select
 				type="text"
 				name="paymentMethod"
@@ -143,7 +143,7 @@
 			{#if $delayed}
 				<Spinner size="5" />
 			{:else}
-				Create transaction
+				Maak uitgave aan
 			{/if}
 		</Button>
 	</form>

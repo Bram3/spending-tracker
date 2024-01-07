@@ -50,11 +50,11 @@
 				type="text"
 				name="search"
 				id="search"
-				placeholder="Search"
+				placeholder="Zoek"
 				required
 				bind:value={searchTerm}
 			/>
-			<Button on:click={() => goto('/suppliers/new')}>New Supplier</Button>
+			<Button on:click={() => goto('/suppliers/new')}>Nieuwe Leverancier</Button>
 		</div>
 	</div>
 	{#if data.suppliers}
@@ -65,7 +65,7 @@
 						<div class="flex items-center justify-between">
 							<div>
 								<P size="2xl">{supplier.name}</P>
-								<P size="xl">Default category: {supplier.defaultCategory.name}</P>
+								<P size="xl">Standaard Categorie: {supplier.defaultCategory.name}</P>
 							</div>
 
 							<div class="flex items-center">

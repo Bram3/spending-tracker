@@ -8,8 +8,6 @@
 		delayMs: 0
 	});
 
-	let selected;
-
 	let categories: any = [];
 	$: data.categories.forEach((category: { id: any; name: any }) => {
 		console.log(category);
@@ -27,16 +25,16 @@
 		use:enhance
 		action="?/new"
 	>
-		<h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Create new supplier</h3>
+		<h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Nieuwe leverancier</h3>
 		{#if $message}<Helper class="mt-2" helperClass="text-lg" color="red">{$message}</Helper>{/if}
 
 		<Label class="space-y-2">
-			<span>Name</span>
+			<span>Naam</span>
 			<Input
 				type="text"
 				name="name"
 				id="name"
-				placeholder="Category Name"
+				placeholder="Categorie naam"
 				required
 				bind:value={$form.name}
 				{...$constraints.name}
@@ -44,7 +42,7 @@
 			{#if $errors.name}<Helper class="mt-2" color="red">{$errors.name}</Helper>{/if}
 		</Label>
 		<Label class="space-y-2">
-			<span>Default Category</span>
+			<span>Standaard Categorie</span>
 			<Select
 				type="text"
 				name="defaultCategoryId"
@@ -62,7 +60,7 @@
 			{#if $delayed}
 				<Spinner size="5" />
 			{:else}
-				Create Supplier
+				Maak leverancier aan
 			{/if}
 		</Button>
 	</form>

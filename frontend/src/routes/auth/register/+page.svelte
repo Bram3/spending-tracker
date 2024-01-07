@@ -12,9 +12,7 @@
 <div class="grid h-screen grid-cols-1 items-center justify-items-center">
 	<Card class="w-full max-w-md">
 		<form class="flex flex-col space-y-6" method="POST" use:enhance>
-			<h3 class="text-xl font-medium text-gray-900 dark:text-white">
-				Create a Spending Tracker account
-			</h3>
+			<h3 class="text-xl font-medium text-gray-900 dark:text-white">Maak een account aan</h3>
 			{#if $message}<Helper class="mt-2" helperClass="text-lg" color="red">{$message}</Helper>{/if}
 			<Label class="space-y-2">
 				<span>Email</span>
@@ -30,7 +28,7 @@
 				{#if $errors.email}<Helper class="mt-2" color="red">{$errors.email}</Helper>{/if}
 			</Label>
 			<Label class="space-y-2">
-				<span>Password</span>
+				<span>Wachtwoord</span>
 				<Input
 					type="password"
 					name="password"
@@ -43,7 +41,7 @@
 				{#if $errors.password}<Helper class="mt-2" color="red">{$errors.password}</Helper>{/if}
 			</Label>
 			<Label class="space-y-2">
-				<span>Confirm Password</span>
+				<span>Wachtwoord herhalen</span>
 				<Input
 					type="password"
 					name="confirmPassword"
@@ -61,11 +59,11 @@
 				{#if $delayed}
 					<Spinner size="5" />
 				{:else}
-					Create Account
+					Maak account aan
 				{/if}
 			</Button>
 			<div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-				Already have an account? <a
+				Heb je al een account? <a
 					href="/auth/login"
 					class="text-primary-700 dark:text-primary-500 hover:underline"
 				>

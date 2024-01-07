@@ -50,11 +50,11 @@
 				type="text"
 				name="search"
 				id="search"
-				placeholder="Search"
+				placeholder="Zoek"
 				required
 				bind:value={searchTerm}
 			/>
-			<Button on:click={() => goto('/categories/new')}>New Category</Button>
+			<Button on:click={() => goto('/categories/new')}>Nieuwe Categorie</Button>
 		</div>
 	</div>
 	{#if data.categories}

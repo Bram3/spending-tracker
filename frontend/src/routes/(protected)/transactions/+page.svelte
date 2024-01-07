@@ -55,21 +55,19 @@
 				required
 				bind:value={searchTerm}
 			/>
-			<Button on:click={() => goto('/transactions/new')}>New Transaction</Button>
+			<Button on:click={() => goto('/transactions/new')}>Nieuwe uitgave</Button>
 		</div>
 	</div>
 	<div class="grid grid-flow-row gap-7">
 		<Table hoverable={true}>
 			<TableHead>
-				<TableHeadCell>Description</TableHeadCell>
-				<TableHeadCell>Amount</TableHeadCell>
-				<TableHeadCell>Payment Method</TableHeadCell>
-				<TableHeadCell>Category</TableHeadCell>
-				<TableHeadCell>Supplier</TableHeadCell>
-				<TableHeadCell>User</TableHeadCell>
-				<TableHeadCell>
-					<span class="sr-only">Edit</span>
-				</TableHeadCell>
+				<TableHeadCell>Omschrijving</TableHeadCell>
+				<TableHeadCell>Kostprijs</TableHeadCell>
+				<TableHeadCell>Betaal methode</TableHeadCell>
+				<TableHeadCell>Categorie</TableHeadCell>
+				<TableHeadCell>Leverancier</TableHeadCell>
+				<TableHeadCell>Gebruiker</TableHeadCell>
+				<TableHeadCell></TableHeadCell>
 			</TableHead>
 			<TableBody tableBodyClass="divide-y">
 				{#each filteredItems as item}
@@ -84,7 +82,8 @@
 							<div class="flex gap-2">
 								<a
 									href="/transactions/{item.id}/edit"
-									class="text-primary-600 dark:text-primary-500 font-medium hover:underline">Edit</a
+									class="text-primary-600 dark:text-primary-500 font-medium hover:underline"
+									>Bewerken</a
 								>
 								<form method="POST" use:enhance={onSubmitDelete} action="?/delete">
 									<input type="hidden" name="id" value={item.id} />
@@ -95,7 +94,7 @@
 											class="text-primary-600 dark:text-primary-500 font-medium hover:underline"
 										>
 											<a class="text-primary-600 dark:text-primary-500 font-medium hover:underline"
-												>Delete</a
+												>Verwijderen</a
 											>
 										</button>
 									</div>
