@@ -1,0 +1,32 @@
+services:
+  api:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+      target: prod
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend/src:/app/src
+    depends_on:
+      - db
+    env_file:
+      - .env
+  web:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 4173:4173
+    depends_on:
+      - db
+    env_file:
+      - .env
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
