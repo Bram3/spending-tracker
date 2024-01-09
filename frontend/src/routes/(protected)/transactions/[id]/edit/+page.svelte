@@ -29,7 +29,7 @@
 		});
 	});
 
-	$: {
+	function changeCategory() {
 		const supplier = data.suppliers.find(
 			(supplier: { id: any }) => supplier.id === $form.supplierId
 		);
@@ -69,6 +69,7 @@
 				name="supplierId"
 				id="supplierId"
 				required
+				on:change={changeCategory}
 				items={suppliers}
 				bind:value={$form.supplierId}
 				{...$constraints.supplierId}

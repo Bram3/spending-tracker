@@ -1,17 +1,17 @@
 services:
-  # api:
-  #   build: 
-  #     context: ./backend
-  #     dockerfile: Dockerfile
-  #     target: dev
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #     - ./backend/src:/app/src
-  #   depends_on:
-  #     - db
-  #   env_file:
-  #     - .env
+  api:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend/src:/app/src
+    depends_on:
+      - db
+    env_file:
+      - .env
   web:
     build: 
       context: ./frontend
