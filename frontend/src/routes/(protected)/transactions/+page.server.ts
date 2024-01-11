@@ -10,6 +10,9 @@ export const load = (async ({ locals, }) => {
         });
     }
     const transactions = await res.json();
+    transactions.sort((a: { date: string | number | Date; }, b: { date: string | number | Date; }) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+
     return { transactions: transactions };
 }) satisfies PageServerLoad;
 

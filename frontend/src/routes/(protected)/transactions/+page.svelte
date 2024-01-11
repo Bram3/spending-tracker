@@ -66,6 +66,7 @@
 				<TableHeadCell>Betaal methode</TableHeadCell>
 				<TableHeadCell>Categorie</TableHeadCell>
 				<TableHeadCell>Leverancier</TableHeadCell>
+				<TableHeadCell>Datum</TableHeadCell>
 				<TableHeadCell>Gebruiker</TableHeadCell>
 				<TableHeadCell></TableHeadCell>
 			</TableHead>
@@ -77,6 +78,7 @@
 						<TableBodyCell>{item.paymentMethod}</TableBodyCell>
 						<TableBodyCell>{item.category.name}</TableBodyCell>
 						<TableBodyCell>{item.supplier.name}</TableBodyCell>
+						<TableBodyCell>{new Date(item.date).toLocaleDateString()}</TableBodyCell>
 						<TableBodyCell>{item.user.email}</TableBodyCell>
 						<TableBodyCell>
 							<div class="flex gap-2">
