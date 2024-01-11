@@ -12,6 +12,7 @@ services:
       - db
     env_file:
       - .env
+    restart: always
   web:
     build: 
       context: ./frontend
@@ -22,6 +23,7 @@ services:
       - db
     env_file:
       - .env
+    restart: always
   db:
     image: postgres
     ports:
@@ -30,3 +32,4 @@ services:
       - .env
     volumes:
       - ./data/db:/var/lib/postgresql/data
+    restart: always
