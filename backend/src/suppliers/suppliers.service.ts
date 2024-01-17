@@ -21,7 +21,11 @@ export class SuppliersService {
     }
 
     async findAll(): Promise<Supplier[]> {
-        return this.supplierRepository.find({ relations: ["defaultCategory"] });
+        return this.supplierRepository.find({
+            relations: ["defaultCategory"], order: {
+                name: 'ASC', // Sort by 'name' in ascending order
+            },
+        });
     }
 
     async findOne(id: number): Promise<Supplier> {

@@ -81,27 +81,31 @@
 						<TableBodyCell>{new Date(item.date).toLocaleDateString()}</TableBodyCell>
 						<TableBodyCell>{item.user.email}</TableBodyCell>
 						<TableBodyCell>
-							<div class="flex gap-2">
-								<a
-									href="/transactions/{item.id}/edit"
-									class="text-primary-600 dark:text-primary-500 font-medium hover:underline"
-									>Bewerken</a
-								>
-								<form method="POST" use:enhance={onSubmitDelete} action="?/delete">
-									<input type="hidden" name="id" value={item.id} />
-									<div class="ml-4 flex flex-col items-center">
-										<!-- svelte-ignore a11y-missing-attribute -->
+							<TableBodyCell>
+								<div class="flex justify-between gap-4">
+									<a
+										href="/transactions/{item.id}/attachments"
+										class="text-primary-600 dark:text-primary-500 font-medium hover:underline"
+									>
+										Bijlagen
+									</a>
+									<a
+										href="/transactions/{item.id}/edit"
+										class="text-primary-600 dark:text-primary-500 font-medium hover:underline"
+									>
+										Bewerken
+									</a>
+									<form method="POST" use:enhance={onSubmitDelete} action="?/delete">
+										<input type="hidden" name="id" value={item.id} />
 										<button
 											type="submit"
 											class="text-primary-600 dark:text-primary-500 font-medium hover:underline"
 										>
-											<a class="text-primary-600 dark:text-primary-500 font-medium hover:underline"
-												>Verwijderen</a
-											>
+											Verwijderen
 										</button>
-									</div>
-								</form>
-							</div>
+									</form>
+								</div>
+							</TableBodyCell>
 						</TableBodyCell>
 					</TableBodyRow>
 				{/each}

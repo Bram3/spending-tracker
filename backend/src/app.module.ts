@@ -14,6 +14,8 @@ import { Supplier } from './suppliers/entities/supplier.entity';
 import { Category } from './categories/entities/category.entity';
 import { Transaction } from 'typeorm';
 import { TransactionsModule } from './transactions/transactions.module';
+import { Attachment } from './attachments/entities/attachment.entity';
+import { AttachmentsModule } from './attachments/attachments.module';
 @Module({
   imports: [ConfigModule.forRoot({ validationSchema: configValidationSchema }), TypeOrmModule.forRootAsync({
     imports: [ConfigModule],
@@ -28,11 +30,10 @@ import { TransactionsModule } from './transactions/transactions.module';
         database: configService.get('POSTGRES_DB'),
         autoLoadEntities: true,
         synchronize: true,
-        entities: [User, Supplier, Category, Transaction],
+        entities: [User, Supplier, Category, Transaction, Attachment],
       };
     },
-  }), UsersModule, AuthModule, SuppliersModule, CategoriesModule, TransactionsModule
-  ],
+  }), UsersModule, AuthModule, SuppliersModule, CategoriesModule, TransactionsModule, AttachmentsModule],
   controllers: [AppController],
   providers: [AppService],
 })

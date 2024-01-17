@@ -28,7 +28,8 @@ export const load = (async ({ locals }) => {
 export const actions: Actions = {
 
     new: async ({ params, request, locals, }) => {
-        const form = await superValidate(request, newTransactionSchema);
+        const formData = await request.formData()
+        const form = await superValidate(formData, newTransactionSchema);
 
         if (!form.valid) {
             return fail(400, { form });
@@ -53,6 +54,30 @@ export const actions: Actions = {
             }
 
         }
+        const files = formData.getAll('files');
+        console.log(files);
+        if (files) {
+            const transaction = await res.json();
+            const data = new FormData();
+            files.forEach(file => {
+                data.append('files', file);
+            })
+            const filesRes = await fetch(`http://api:${process.env.API_PORT}/transactions/${transaction.id}/attachments`, { headers: { 'Authorization': `Bearer ${locals.token}` }, method: "POST", body: data });
+            if (filesRes.status !== 201) {
+                try {
+                    const json = await res.json();
+                    return setMessage(form,
+                        json.message,
+                    );
+                } catch (e) {
+                    console.error(e);
+                    return setMessage(form,
+                        'Error uploading attachments',
+                    );
+                }
+            }
+        }
+
         throw redirect(302, '/transactions')
     }
 };

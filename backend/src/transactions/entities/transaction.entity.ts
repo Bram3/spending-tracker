@@ -1,7 +1,8 @@
+import { Attachment } from 'src/attachments/entities/attachment.entity';
 import { Category } from 'src/categories/entities/category.entity';
 import { Supplier } from 'src/suppliers/entities/supplier.entity';
 import { User } from 'src/users/entities/user.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, RelationId } from 'typeorm';
 
 @Entity()
 export class Transaction {
@@ -42,4 +43,7 @@ export class Transaction {
     @Column()
     @RelationId((transaction: Transaction) => transaction.user)
     userId: number;
+
+    @OneToMany(() => Attachment, attachment => attachment.transaction)
+    attachments: Attachment[];
 }

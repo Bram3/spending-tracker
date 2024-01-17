@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Helper, Label, Input, Button, Spinner, Select } from 'flowbite-svelte';
+	import { Helper, Label, Input, Button, Spinner, Select, Fileupload } from 'flowbite-svelte';
 	import { superForm } from 'sveltekit-superforms/client';
 	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
@@ -45,6 +45,7 @@
 		method="POST"
 		use:enhance
 		action="?/new"
+		enctype="multipart/form-data"
 	>
 		<h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Nieuwe Uitgave</h3>
 		{#if $message}<Helper class="mt-2" helperClass="text-lg" color="red">{$message}</Helper>{/if}
@@ -139,6 +140,11 @@
 			{#if $errors.paymentMethod}<Helper class="mt-2" color="red">{$errors.paymentMethod}</Helper
 				>{/if}
 		</Label>
+		<Label class="space-y-2">
+			<span>Bijlagen</span>
+			<Fileupload accept="image/*" name="files" id="files" multiple />
+		</Label>
+
 		<Button type="submit" class="w-full">
 			{#if $delayed}
 				<Spinner size="5" />

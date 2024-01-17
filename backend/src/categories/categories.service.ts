@@ -25,7 +25,11 @@ export class CategoriesService {
     }
 
     async findAll(): Promise<Category[]> {
-        return this.categoryRepository.find();
+        return this.categoryRepository.find({
+            order: {
+                name: 'ASC', // Sort by 'name' in ascending order
+            },
+        });
     }
 
     async existsByName(name: string): Promise<boolean> {
