@@ -8,6 +8,7 @@ services:
       - 3000
     volumes:
       - ./backend/src:/app/src
+      - ${UPLOAD_DIR}:/app/uploads
     depends_on:
       - db
     env_file:
