@@ -1,28 +1,159 @@
 <script lang="ts">
-	import {
-		Button,
-		Helper,
-		Input,
-		Label,
-		Listgroup,
-		ListgroupItem,
-		Modal,
-		P,
-		Spinner
-	} from 'flowbite-svelte';
-	import { EditOutline, TrashBinOutline } from 'flowbite-svelte-icons';
-	import type { PageData } from './$types';
-	import { goto } from '$app/navigation';
-	import { superForm } from 'sveltekit-superforms/client';
-	import { enhance } from '$app/forms';
-	import { toast } from '@zerodevx/svelte-toast';
+    import { EditOutline, TrashBinOutline } from 'flowbite-svelte-icons';
+    import type { PageData } from './$types';
+    import { goto } from '$app/navigation';
+    import { superForm } from 'sveltekit-superforms/client';
+    import { enhance } from '$app/forms';
+    import { toast } from '@zerodevx/svelte-toast';
+	import { Input, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
 
-	export let data: PageData;
+    export let data: PageData;
+	let categorySearchTerm = '';
+	$: categoryFilteredItems = data.stats.categoryStats.filter(
+		(item: { name: string }) =>
+			item.name.toLowerCase().indexOf(categorySearchTerm.toLowerCase()) !== -1
+	);
+	let supplierSearchTerm = '';
+	$: supplierFilteredItems = data.stats.supplierStats.filter(
+		(item: { name: string }) =>
+			item.name.toLowerCase().indexOf(supplierSearchTerm.toLowerCase()) !== -1
+	);
 </script>
 
 <div class="grid grid-flow-row gap-7 p-5">
-	<div class="block w-full">
-		<P class="text-2xl font-bold">Totaal uitgegeven: €{data.totalSpent}</P>
+	{#if data.stats.paymentMethodStats}
+	<div class="grid grid-flow-row gap-7">
+		<Table hoverable={true}>
+			<TableHead>
+				<TableHeadCell>Betaal Methode</TableHeadCell>
+				<TableHeadCell>{new Date().getFullYear()}</TableHeadCell>
+				<TableHeadCell>{new Date().getFullYear()-1}</TableHeadCell>
+				<TableHeadCell>{new Date().getFullYear()-2}</TableHeadCell>
+				<TableHeadCell>Januari</TableHeadCell>
+				<TableHeadCell>Februari</TableHeadCell>
+				<TableHeadCell>Maart</TableHeadCell>
+				<TableHeadCell>April</TableHeadCell>
+				<TableHeadCell>Mei</TableHeadCell>
+				<TableHeadCell>Juni</TableHeadCell>
+				<TableHeadCell>Juli</TableHeadCell>
+				<TableHeadCell>Augustus</TableHeadCell>
+				<TableHeadCell>September</TableHeadCell>
+				<TableHeadCell>Oktober</TableHeadCell>
+				<TableHeadCell>November</TableHeadCell>
+				<TableHeadCell>December</TableHeadCell>
+			</TableHead>
+			<TableBody tableBodyClass="divide-y">
+				{#each data.stats.paymentMethodStats as item}
+					<TableBodyRow>
+						<TableBodyCell>{item.name}</TableBodyCell>
+						<TableBodyCell>€{item.thisYear.total}</TableBodyCell>
+						<TableBodyCell>€{item.lastYear.total}</TableBodyCell>
+						<TableBodyCell>€{item.yearBeforeLastYear.total}</TableBodyCell>
+						{#each item.thisYear.months as total}
+							<TableBodyCell>€{total}</TableBodyCell>
+						{/each}
+					</TableBodyRow>
+				{/each}
+			</TableBody>
+		</Table>
 	</div>
-
+	{/if}
+	<div class="block w-full">
+		<div class="float-right grid gap-7">
+			<Input
+				type="text"
+				name="search"
+				id="search"
+				placeholder="Zoek"
+				required
+				bind:value={categorySearchTerm}
+			/>
+		</div>
+	</div>
+	{#if data.stats.categoryStats}
+	<div class="grid grid-flow-row gap-7">
+		<Table hoverable={true}>
+			<TableHead>
+				<TableHeadCell>Categorie</TableHeadCell>
+				<TableHeadCell>{new Date().getFullYear()}</TableHeadCell>
+				<TableHeadCell>{new Date().getFullYear()-1}</TableHeadCell>
+				<TableHeadCell>{new Date().getFullYear()-2}</TableHeadCell>
+				<TableHeadCell>Januari</TableHeadCell>
+				<TableHeadCell>Februari</TableHeadCell>
+				<TableHeadCell>Maart</TableHeadCell>
+				<TableHeadCell>April</TableHeadCell>
+				<TableHeadCell>Mei</TableHeadCell>
+				<TableHeadCell>Juni</TableHeadCell>
+				<TableHeadCell>Juli</TableHeadCell>
+				<TableHeadCell>Augustus</TableHeadCell>
+				<TableHeadCell>September</TableHeadCell>
+				<TableHeadCell>Oktober</TableHeadCell>
+				<TableHeadCell>November</TableHeadCell>
+				<TableHeadCell>December</TableHeadCell>
+			</TableHead>
+			<TableBody tableBodyClass="divide-y">
+				{#each categoryFilteredItems as item}
+					<TableBodyRow>
+						<TableBodyCell>{item.name}</TableBodyCell>
+						<TableBodyCell>€{item.thisYear.total}</TableBodyCell>
+						<TableBodyCell>€{item.lastYear.total}</TableBodyCell>
+						<TableBodyCell>€{item.yearBeforeLastYear.total}</TableBodyCell>
+						{#each item.thisYear.months as total}
+							<TableBodyCell>€{total}</TableBodyCell>
+						{/each}
+					</TableBodyRow>
+				{/each}
+			</TableBody>
+		</Table>
+	</div>
+	{/if}
+	<div class="block w-full">
+		<div class="float-right grid gap-7">
+			<Input
+				type="text"
+				name="search"
+				id="search"
+				placeholder="Zoek"
+				required
+				bind:value={supplierSearchTerm}
+			/>
+		</div>
+	</div>
+	{#if data.stats.supplierStats}
+	<div class="grid grid-flow-row gap-7">
+		<Table hoverable={true}>
+			<TableHead>
+				<TableHeadCell>Leverancier</TableHeadCell>
+				<TableHeadCell>{new Date().getFullYear()}</TableHeadCell>
+				<TableHeadCell>{new Date().getFullYear()-1}</TableHeadCell>
+				<TableHeadCell>{new Date().getFullYear()-2}</TableHeadCell>
+				<TableHeadCell>Januari</TableHeadCell>
+				<TableHeadCell>Februari</TableHeadCell>
+				<TableHeadCell>Maart</TableHeadCell>
+				<TableHeadCell>April</TableHeadCell>
+				<TableHeadCell>Mei</TableHeadCell>
+				<TableHeadCell>Juni</TableHeadCell>
+				<TableHeadCell>Juli</TableHeadCell>
+				<TableHeadCell>Augustus</TableHeadCell>
+				<TableHeadCell>September</TableHeadCell>
+				<TableHeadCell>Oktober</TableHeadCell>
+				<TableHeadCell>November</TableHeadCell>
+				<TableHeadCell>December</TableHeadCell>
+			</TableHead>
+			<TableBody tableBodyClass="divide-y">
+				{#each supplierFilteredItems as item}
+					<TableBodyRow>
+						<TableBodyCell>{item.name}</TableBodyCell>
+						<TableBodyCell>€{item.thisYear.total}</TableBodyCell>
+						<TableBodyCell>€{item.lastYear.total}</TableBodyCell>
+						<TableBodyCell>€{item.yearBeforeLastYear.total}</TableBodyCell>
+						{#each item.thisYear.months as total}
+							<TableBodyCell>€{total}</TableBodyCell>
+						{/each}
+					</TableBodyRow>
+				{/each}
+			</TableBody>
+		</Table>
+	</div>
+	{/if}
 </div>
