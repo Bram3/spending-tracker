@@ -50,7 +50,7 @@
 						<TableBodyCell>€{Math.round(item.lastYear.total*100)/100}</TableBodyCell>
 						<TableBodyCell>€{Math.round(item.yearBeforeLastYear.total*100)/100}</TableBodyCell>
 						{#each item.thisYear.months as total}
-							<TableBodyCell>€{total}</TableBodyCell>
+							<TableBodyCell>€{Math.round(total*100)/100}</TableBodyCell>
 						{/each}
 					</TableBodyRow>
 				{/each}
@@ -99,7 +99,7 @@
 						<TableBodyCell>€{Math.round(item.lastYear.total*100)/100}</TableBodyCell>
 						<TableBodyCell>€{Math.round(item.yearBeforeLastYear.total*100)/100}</TableBodyCell>
 						{#each item.thisYear.months as total}
-							<TableBodyCell>€{total}</TableBodyCell>
+							<TableBodyCell>€{Math.round(total*100)/100}</TableBodyCell>
 						{/each}
 					</TableBodyRow>
 				{/each}
@@ -148,7 +148,7 @@
 						<TableBodyCell>€{Math.round(item.lastYear.total*100)/100}</TableBodyCell>
 						<TableBodyCell>€{Math.round(item.yearBeforeLastYear.total*100)/100}</TableBodyCell>
 						{#each item.thisYear.months as total}
-							<TableBodyCell>€{total}</TableBodyCell>
+							<TableBodyCell>€{Math.round(total*100)/100}</TableBodyCell>
 						{/each}
 					</TableBodyRow>
 				{/each}
