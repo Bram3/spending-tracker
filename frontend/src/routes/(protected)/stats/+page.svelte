@@ -46,9 +46,9 @@
 				{#each data.stats.paymentMethodStats as item}
 					<TableBodyRow>
 						<TableBodyCell>{item.name}</TableBodyCell>
-						<TableBodyCell>€{item.thisYear.total}</TableBodyCell>
-						<TableBodyCell>€{item.lastYear.total}</TableBodyCell>
-						<TableBodyCell>€{item.yearBeforeLastYear.total}</TableBodyCell>
+						<TableBodyCell>€{Math.round(item.thisYear.total*100)/100}</TableBodyCell>
+						<TableBodyCell>€{Math.round(item.lastYear.total*100)/100}</TableBodyCell>
+						<TableBodyCell>€{Math.round(item.yearBeforeLastYear.total*100)/100}</TableBodyCell>
 						{#each item.thisYear.months as total}
 							<TableBodyCell>€{total}</TableBodyCell>
 						{/each}
@@ -95,9 +95,9 @@
 				{#each categoryFilteredItems as item}
 					<TableBodyRow>
 						<TableBodyCell>{item.name}</TableBodyCell>
-						<TableBodyCell>€{item.thisYear.total}</TableBodyCell>
-						<TableBodyCell>€{item.lastYear.total}</TableBodyCell>
-						<TableBodyCell>€{item.yearBeforeLastYear.total}</TableBodyCell>
+						<TableBodyCell>€{Math.round(item.thisYear.total*100)/100}</TableBodyCell>
+						<TableBodyCell>€{Math.round(item.lastYear.total*100)/100}</TableBodyCell>
+						<TableBodyCell>€{Math.round(item.yearBeforeLastYear.total*100)/100}</TableBodyCell>
 						{#each item.thisYear.months as total}
 							<TableBodyCell>€{total}</TableBodyCell>
 						{/each}
@@ -144,9 +144,9 @@
 				{#each supplierFilteredItems as item}
 					<TableBodyRow>
 						<TableBodyCell>{item.name}</TableBodyCell>
-						<TableBodyCell>€{item.thisYear.total}</TableBodyCell>
-						<TableBodyCell>€{item.lastYear.total}</TableBodyCell>
-						<TableBodyCell>€{item.yearBeforeLastYear.total}</TableBodyCell>
+						<TableBodyCell>€{Math.round(item.thisYear.total*100)/100}</TableBodyCell>
+						<TableBodyCell>€{Math.round(item.lastYear.total*100)/100}</TableBodyCell>
+						<TableBodyCell>€{Math.round(item.yearBeforeLastYear.total*100)/100}</TableBodyCell>
 						{#each item.thisYear.months as total}
 							<TableBodyCell>€{total}</TableBodyCell>
 						{/each}

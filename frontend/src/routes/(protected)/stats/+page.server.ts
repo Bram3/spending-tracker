@@ -11,7 +11,6 @@ export const load = (async ({ locals }) => {
         });
     }
     const stats = await res.json();
-    console.log(stats);
 
     return { stats };
 }) satisfies PageServerLoad;
