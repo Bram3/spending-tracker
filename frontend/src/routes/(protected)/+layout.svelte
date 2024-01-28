@@ -58,6 +58,7 @@
 			<NavLi href="/transactions" on:click={handleClick}>Uitgaven</NavLi>
 			<NavLi href="/categories" on:click={handleClick}>Categorieën</NavLi>
 			<NavLi href="/suppliers" on:click={handleClick}>Leveranciers</NavLi>
+			<NavLi href="/stats" on:click={handleClick}>Statistiek</NavLi>
 		</NavUl>
 	</Navbar>
 

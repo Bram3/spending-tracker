@@ -16,6 +16,7 @@ import { Transaction } from 'typeorm';
 import { TransactionsModule } from './transactions/transactions.module';
 import { Attachment } from './attachments/entities/attachment.entity';
 import { AttachmentsModule } from './attachments/attachments.module';
+import { StatsModule } from './stats/stats.module';
 @Module({
   imports: [ConfigModule.forRoot({ validationSchema: configValidationSchema }), TypeOrmModule.forRootAsync({
     imports: [ConfigModule],
@@ -33,7 +34,7 @@ import { AttachmentsModule } from './attachments/attachments.module';
         entities: [User, Supplier, Category, Transaction, Attachment],
       };
     },
-  }), UsersModule, AuthModule, SuppliersModule, CategoriesModule, TransactionsModule, AttachmentsModule],
+  }), UsersModule, AuthModule, SuppliersModule, CategoriesModule, TransactionsModule, AttachmentsModule, StatsModule],
   controllers: [AppController],
   providers: [AppService],
 })

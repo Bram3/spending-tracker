@@ -7,6 +7,7 @@ import { Attachment } from 'src/attachments/entities/attachment.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Transaction, Attachment])],
+  exports: [TransactionsService],
   controllers: [TransactionsController],
   providers: [TransactionsService],
 })
