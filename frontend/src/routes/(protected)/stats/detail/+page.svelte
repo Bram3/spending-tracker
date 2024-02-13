@@ -46,19 +46,19 @@
 </script>
 
 <div class="grid grid-flow-row gap-7 p-5">
-<div class="flex justify-between items-center w-full">
-    <P size="4xl" weight="bold">€{data.total}</P>
-    <div class="grid gap-7">
-        <Input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Zoek"
-            required
-            bind:value={searchTerm}
-        />
-    </div>
-</div>
+	<div class="flex w-full items-center justify-between space-x-7">
+		<P size="4xl" weight="bold">€{Math.round(data.total * 100) / 100}</P>
+		<div class="grid gap-7">
+			<Input
+				type="text"
+				name="search"
+				id="search"
+				placeholder="Zoek"
+				required
+				bind:value={searchTerm}
+			/>
+		</div>
+	</div>
 
 	<div class="grid grid-flow-row gap-7">
 		<Table hoverable={true}>
