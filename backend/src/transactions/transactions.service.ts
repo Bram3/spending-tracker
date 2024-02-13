@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 import { CreateTransactionDto } from './dto/createTransaction.dto';
 import { UpdateTransactionDto } from './dto/updateTransaction.dto';
 import { Transaction } from './entities/transaction.entity';
@@ -88,5 +88,38 @@ export class TransactionsService {
         }
         await this.attachmentsRepository.delete(attachmentId);
     }
+
+    async filter(
+        startDate: string,
+        endDate: string,
+        category: string,
+        supplier: string,
+        paymentMethod: string,
+      ): Promise<Transaction[]> {
+        const where = {};
+
+        if (startDate && endDate) {
+          where['date'] = Between(new Date(startDate).toISOString(), new Date(endDate).toISOString());
+        }
+    
+        if (category) {
+          where['category'] = {
+            "name": category
+          };
+        }
+    
+        if (supplier) {
+          where['supplier'] = {
+            "name": supplier
+          };
+        }
+    
+        if (paymentMethod && paymentMethod !== "Gecombineerd") {
+          where['paymentMethod'] = paymentMethod;
+        }
+
+        return this.transactionsRepository.find({ relations: ["category", "supplier", "user", "attachments"], where   });
+      }
+      
 
 }

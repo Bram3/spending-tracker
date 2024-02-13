@@ -44,17 +44,25 @@
 			</TableHead>
 			<TableBody tableBodyClass="divide-y">
 				{#each data.stats.paymentMethodStats as item}
-					<TableBodyRow>
-						<TableBodyCell>{item.name}</TableBodyCell>
-						<TableBodyCell>€{Math.round(item.thisYear.total*100)/100}</TableBodyCell>
-						<TableBodyCell>€{Math.round(item.lastYear.total*100)/100}</TableBodyCell>
-						<TableBodyCell>€{Math.round(item.yearBeforeLastYear.total*100)/100}</TableBodyCell>
-						{#each item.thisYear.months as total}
-							<TableBodyCell>€{Math.round(total*100)/100}</TableBodyCell>
-						{/each}
-					</TableBodyRow>
+				  <TableBodyRow>
+					<TableBodyCell>{item.name}</TableBodyCell>
+					<TableBodyCell on:click={() => {goto(`/stats/detail?paymentMethod=${item.name}&startDate=${new Date().getFullYear()}-01-01&endDate=${new Date().getFullYear()}-12-31`)}}>
+					  €{Math.round(item.thisYear.total*100)/100}
+					</TableBodyCell>
+					<TableBodyCell on:click={() => {goto(`/stats/detail?paymentMethod=${item.name}&startDate=${new Date().getFullYear()-1}-01-01&endDate=${new Date().getFullYear()-1}-12-31`)}}>
+					  €{Math.round(item.lastYear.total*100)/100}
+					</TableBodyCell>
+					<TableBodyCell on:click={() => {goto(`/stats/detail?paymentMethod=${item.name}&startDate=${new Date().getFullYear()-2}-01-01&endDate=${new Date().getFullYear()-2}-12-31`)}}>
+					  €{Math.round(item.yearBeforeLastYear.total*100)/100}
+					</TableBodyCell>
+					{#each item.thisYear.months as total, index}
+					  <TableBodyCell on:click={() => {goto(`/stats/detail?paymentMethod=${item.name}&startDate=${new Date().getFullYear()}-${index+1 < 10 ? '0' + (index+1) : index+1}-01&endDate=${new Date().getFullYear()}-${index+1 < 10 ? '0' + (index+1) : index+1}-31`)}}>
+						€{Math.round(total*100)/100}
+					  </TableBodyCell>
+					{/each}
+				  </TableBodyRow>
 				{/each}
-			</TableBody>
+			  </TableBody>
 		</Table>
 	</div>
 	{/if}
@@ -93,17 +101,25 @@
 			</TableHead>
 			<TableBody tableBodyClass="divide-y">
 				{#each categoryFilteredItems as item}
-					<TableBodyRow>
-						<TableBodyCell>{item.name}</TableBodyCell>
-						<TableBodyCell>€{Math.round(item.thisYear.total*100)/100}</TableBodyCell>
-						<TableBodyCell>€{Math.round(item.lastYear.total*100)/100}</TableBodyCell>
-						<TableBodyCell>€{Math.round(item.yearBeforeLastYear.total*100)/100}</TableBodyCell>
-						{#each item.thisYear.months as total}
-							<TableBodyCell>€{Math.round(total*100)/100}</TableBodyCell>
-						{/each}
-					</TableBodyRow>
+				  <TableBodyRow>
+					<TableBodyCell>{item.name}</TableBodyCell>
+					<TableBodyCell on:click={() => {goto(`/stats/detail?category=${item.name}&startDate=${new Date().getFullYear()}-01-01&endDate=${new Date().getFullYear()}-12-31`)}}>
+					  €{Math.round(item.thisYear.total*100)/100}
+					</TableBodyCell>
+					<TableBodyCell on:click={() => {goto(`/stats/detail?category=${item.name}&startDate=${new Date().getFullYear()-1}-01-01&endDate=${new Date().getFullYear()-1}-12-31`)}}>
+					  €{Math.round(item.lastYear.total*100)/100}
+					</TableBodyCell>
+					<TableBodyCell on:click={() => {goto(`/stats/detail?category=${item.name}&startDate=${new Date().getFullYear()-2}-01-01&endDate=${new Date().getFullYear()-2}-12-31`)}}>
+					  €{Math.round(item.yearBeforeLastYear.total*100)/100}
+					</TableBodyCell>
+					{#each item.thisYear.months as total, index}
+					  <TableBodyCell on:click={() => {goto(`/stats/detail?category=${item.name}&startDate=${new Date().getFullYear()}-${index+1 < 10 ? '0' + (index+1) : index+1}-01&endDate=${new Date().getFullYear()}-${index+1 < 10 ? '0' + (index+1) : index+1}-31`)}}>
+						€{Math.round(total*100)/100}
+					  </TableBodyCell>
+					{/each}
+				  </TableBodyRow>
 				{/each}
-			</TableBody>
+			  </TableBody>
 		</Table>
 	</div>
 	{/if}
@@ -142,17 +158,25 @@
 			</TableHead>
 			<TableBody tableBodyClass="divide-y">
 				{#each supplierFilteredItems as item}
-					<TableBodyRow>
-						<TableBodyCell>{item.name}</TableBodyCell>
-						<TableBodyCell>€{Math.round(item.thisYear.total*100)/100}</TableBodyCell>
-						<TableBodyCell>€{Math.round(item.lastYear.total*100)/100}</TableBodyCell>
-						<TableBodyCell>€{Math.round(item.yearBeforeLastYear.total*100)/100}</TableBodyCell>
-						{#each item.thisYear.months as total}
-							<TableBodyCell>€{Math.round(total*100)/100}</TableBodyCell>
-						{/each}
-					</TableBodyRow>
+				  <TableBodyRow>
+					<TableBodyCell>{item.name}</TableBodyCell>
+					<TableBodyCell on:click={() => {goto(`/stats/detail?supplier=${item.name}&startDate=${new Date().getFullYear()}-01-01&endDate=${new Date().getFullYear()}-12-31`)}}>
+					  €{Math.round(item.thisYear.total*100)/100}
+					</TableBodyCell>
+					<TableBodyCell on:click={() => {goto(`/stats/detail?supplier=${item.name}&startDate=${new Date().getFullYear()-1}-01-01&endDate=${new Date().getFullYear()-1}-12-31`)}}>
+					  €{Math.round(item.lastYear.total*100)/100}
+					</TableBodyCell>
+					<TableBodyCell on:click={() => {goto(`/stats/detail?supplier=${item.name}&startDate=${new Date().getFullYear()-2}-01-01&endDate=${new Date().getFullYear()-2}-12-31`)}}>
+					  €{Math.round(item.yearBeforeLastYear.total*100)/100}
+					</TableBodyCell>
+					{#each item.thisYear.months as total, index}
+					  <TableBodyCell on:click={() => {goto(`/stats/detail?supplier=${item.name}&startDate=${new Date().getFullYear()}-${index+1 < 10 ? '0' + (index+1) : index+1}-01&endDate=${new Date().getFullYear()}-${index+1 < 10 ? '0' + (index+1) : index+1}-31`)}}>
+						€{Math.round(total*100)/100}
+					  </TableBodyCell>
+					{/each}
+				  </TableBodyRow>
 				{/each}
-			</TableBody>
+			  </TableBody>
 		</Table>
 	</div>
 	{/if}

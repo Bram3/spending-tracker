@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, StreamableFile, UploadedFile, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, StreamableFile, UploadedFile, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
 import { CreateTransactionDto } from './dto/createTransaction.dto';
 import { UpdateTransactionDto } from './dto/updateTransaction.dto';
@@ -8,11 +8,27 @@ import { Express } from 'express'
 import { diskStorage } from 'multer';
 import { extname, join } from 'path';
 import { createReadStream } from 'fs';
+import { Transaction } from './entities/transaction.entity';
 @Controller('transactions')
 @UseGuards(JwtAuthGuard)
 export class TransactionsController {
     constructor(private readonly transactionsService: TransactionsService) { }
-
+    @Get('filter')
+    async filter(
+      @Query('startDate') startDate: string,
+      @Query('endDate') endDate: string,
+      @Query('category') category: string,
+      @Query('supplier') supplier: string,
+      @Query('paymentMethod') paymentMethod: string,
+    ): Promise<Transaction[]> {
+      return await this.transactionsService.filter(
+        startDate,
+        endDate,
+        category,
+        supplier,
+        paymentMethod,
+      );
+    }
     @Post()
     create(@Body() createTransactionDto: CreateTransactionDto) {
         return this.transactionsService.create(createTransactionDto);
@@ -59,5 +75,7 @@ export class TransactionsController {
     async getAttachments(@Param("id") id: string) {
         return this.transactionsService.getAttachments(+id)
     }
+
+
 
 }

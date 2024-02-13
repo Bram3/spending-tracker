@@ -60,6 +60,9 @@ export class StatsController {
         }
         paymentMethodStats.push(combinedPaymentMethodStat);
 
+        categoryStats.sort((a, b) => a.name.localeCompare(b.name));
+        supplierStats.sort((a, b) => a.name.localeCompare(b.name));
+
         return {
             categoryStats,
             supplierStats,
